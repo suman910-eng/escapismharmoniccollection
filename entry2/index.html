@@ -1,0 +1,200 @@
+<!-- ENTRY 2: AGAIN? STYLES -->
+<!-- This entry creates an interactive refresh symbol grid with a camera/mirror feature -->
+<!-- Users brush over symbols to reveal them, then click to activate the camera -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Again?</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<!-- REFRESH SYMBOL CONTAINER -->
+<!-- I created a container that holds all the refresh symbols -->
+<!-- JavaScript generates a grid of symbols that react to mouse movement -->
+<div id="refresh-container"></div>
+
+<!-- MIRROR CONTAINER -->
+<!-- I created this container for the camera/mirror view -->
+<!-- It's hidden by default and shows when a refresh symbol is clicked -->
+<div id="mirror-container">
+
+    <!-- TOP MARQUEE -->
+    <!-- I created a scrolling text banner at the top that links back to landing page -->
+    <div class="mirror-marquee-top" onclick="window.location.href='../landing.html'">
+        <div class="mirror-marquee-top-track">
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+            <span class="mirror-marquee-text">REFRESH</span>
+        </div>
+    </div>
+
+    <!-- MIRROR CONTENT -->
+    <!-- I created a centered container for the camera grid and controls -->
+    <div class="mirror-content">
+
+        <!-- CAMERA GRID -->
+        <!-- I created a 3x2 grid of video elements that all show the same camera feed -->
+        <!-- Each video has a different filter  -->
+        <div class="mirror-grid">
+            <video class="mirror-frame" id="mirror-video-1" autoplay playsinline muted></video>
+            <video class="mirror-frame" id="mirror-video-2" autoplay playsinline muted></video>
+            <video class="mirror-frame" id="mirror-video-3" autoplay playsinline muted></video>
+            <video class="mirror-frame" id="mirror-video-4" autoplay playsinline muted></video>
+            <video class="mirror-frame" id="mirror-video-5" autoplay playsinline muted></video>
+            <video class="mirror-frame" id="mirror-video-6" autoplay playsinline muted></video>
+        </div>
+        
+        <!-- CAPTURE CONTROLS -->
+        <!-- I created buttons for the photobooth functionality -->
+        <div class="capture-controls">
+            <!-- CAPTURE BUTTON -->
+            <!-- Clicking this captures the current camera view -->
+            <button class="capture-btn" id="capture-btn">Capture</button>
+
+            <!-- SAVE BUTTON -->
+            <!-- Hidden until a photo is captured, downloads the image -->
+            <button class="capture-btn" id="save-btn" style="display: none;">Save Photo</button>
+
+            <!-- PRINT BUTTON -->
+            <!-- Hidden until a photo is captured, opens print option -->
+            <button class="capture-btn" id="print-btn" style="display: none;">Print Photo</button>
+        </div>
+    </div>
+
+    <!-- BOTTOM MARQUEE -->
+    <!-- I created a scrolling text banner at the bottom that links to entry 4 -->
+    <div class="mirror-marquee-bottom" onclick="window.location.href='../entry4/index.html'">
+        <div class="mirror-marquee-bottom-track">
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+            <span class="mirror-marquee-text">ESCAPE</span>
+        </div>
+    </div>
+</div>
+
+<!-- MARQUEE BORDER - CAMERA DENIED FALLBACK -->
+<!-- I created this container that shows when the user denies camera access -->
+<div id="marquee-border">
+
+    <!-- TOP BORDER MARQUEE -->
+    <!-- I created a scrolling "REFRESH" banner that links back to landing page -->
+    <div class="marquee-top" onclick="window.location.href='../landing.html'">
+        <div class="marquee-top-track">
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+            <span class="marquee-text">REFRESH</span>
+        </div>
+    </div>
+
+    <!-- BOTTOM BORDER MARQUEE -->
+    <!-- I created a scrolling "ESCAPE" banner that links to entry 4 -->
+    <div class="marquee-bottom" onclick="window.location.href='../entry4/index.html'">
+        <div class="marquee-bottom-track">
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+            <span class="marquee-text">ESCAPE</span>
+        </div>
+    </div>
+</div>
+
+<!-- FLASH EFFECT -->
+<!-- I created a white overlay that flashes when capturing a photo -->
+<div id="flash"></div>
+
+<!-- CAPTURE CANVAS -->
+<!-- I created a hidden canvas element for capturing the camera grid as an image -->
+<canvas id="capture-canvas"></canvas>
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>

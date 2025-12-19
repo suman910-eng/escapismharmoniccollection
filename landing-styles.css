@@ -1,0 +1,54 @@
+body {
+    margin: 0.75vh;
+    margin-top: 0vh;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    height: calc(100vh - 1.5vh);
+    overflow: hidden;
+    cursor: grab;
+    background: black;
+}
+
+
+/* TEXT BLOCK - FIXED IN BOTTOM-LEFT */
+.container {
+    position: fixed;
+    bottom: 2vh;
+    left: 2vw;
+    max-width: 28vw;
+    text-align: left;
+    margin: 0;
+    transition: opacity 0.3s ease;
+    z-index: 20;           
+    /* I disable pointer events so clicks pass through to buffer icons */
+    pointer-events: none; 
+}
+
+.text {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.9vw;    
+    line-height: 125%;
+    letter-spacing: 0.02em;
+    color: white;
+    /* I use nowrap to keep text on exactly 2 lines */
+    white-space: nowrap;
+}
+
+
+/* SPINNING BUFFER ICONS */
+img {
+    transition: all 0.3s ease;
+    animation: rotate 2s infinite linear;
+}
+
+/* I stop rotation on hover for visual feedback */
+img:hover {
+    animation: rotate 0s infinite linear;
+}
+
+/* ROTATION ANIMATION */
+@keyframes rotate {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

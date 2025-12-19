@@ -1,0 +1,381 @@
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+
+/* REFRESH SYMBOL CONTAINER */
+#refresh-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* REFRESH SYMBOL */
+/* I style each individual refresh symbol in the grid */
+.refresh-symbol {
+    position: absolute;
+    font-size: 28px;
+    color: #333333;
+    opacity: 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    /* I enable pointer events so symbols are clickable */
+    pointer-events: all;
+    cursor: pointer;
+    /* I prevent text selection on symbols */
+    user-select: none;
+}
+
+/* REFRESH SYMBOL VISIBLE STATE */
+/* I show the symbol when the visible class is added */
+.refresh-symbol.visible {
+    opacity: 1;
+}
+
+
+/* MIRROR CONTAINER */
+/* I created a full-screen container for the camera view */
+#mirror-container {
+    /* I hide this by default until a refresh symbol is clicked */
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    z-index: 100;
+}
+
+
+/* MIRROR MARQUEE TOP */
+.mirror-marquee-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* MIRROR MARQUEE TOP TRACK */
+.mirror-marquee-top-track {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+    /* I animate the text scrolling left continuously */
+    animation: scroll-left 20s linear infinite;
+}
+
+/* PAUSE MARQUEE ON HOVER */
+/* I pause the scrolling when the user hovers over it */
+.mirror-marquee-top:hover .mirror-marquee-top-track {
+    animation-play-state: paused;
+}
+
+
+/* MIRROR MARQUEE BOTTOM */
+/* I created a scrolling text banner at the bottom of the mirror view */
+.mirror-marquee-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* MIRROR MARQUEE BOTTOM TRACK */
+/* I created the scrolling track that moves in the opposite direction */
+.mirror-marquee-bottom-track {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+    /* I animate the text scrolling right continuously */
+    animation: scroll-right 20s linear infinite;
+}
+
+/* PAUSE MARQUEE ON HOVER */
+.mirror-marquee-bottom:hover .mirror-marquee-bottom-track {
+    animation-play-state: paused;
+}
+
+
+/* MIRROR MARQUEE TEXT */
+.mirror-marquee-text {
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+/* MIRROR MARQUEE TEXT HOVER */
+/* I change the text to grey when hovered to match refresh symbol style */
+.mirror-marquee-text:hover {
+    color: #333333;
+}
+
+
+/* MIRROR CONTENT */
+/* I created a centered container for the camera grid and controls */
+.mirror-content {
+    position: absolute;
+    /* I use transform to perfectly center the content */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+/* MIRROR GRID */
+/* I created a 3-column grid layout for the camera frames */
+.mirror-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vh;
+    width: 100%;
+}
+
+
+/* MIRROR FRAME */
+/* I style each video element in the camera grid */
+.mirror-frame {
+    width: 100%;
+    border-radius: 8px;
+    /* I add a red border to each camera frame */
+    border: 4px solid red;
+    transition: border-color 0.3s ease, filter 0.3s ease;
+}
+
+/* CAMERA FRAME FILTERS */
+/* I apply grayscale filter to all camera frames */
+#mirror-video-1 {
+    filter: grayscale(100%);
+}
+
+#mirror-video-2 {
+    filter: grayscale(100%);
+}
+
+#mirror-video-3 {
+    filter: grayscale(100%);
+}
+
+#mirror-video-4 {
+    filter: grayscale(100%);
+}
+
+#mirror-video-5 {
+    filter: grayscale(100%);
+}
+
+#mirror-video-6 {
+    filter: grayscale(100%);
+}
+
+
+/* CAPTURE CONTROLS */
+/* I style the container for the photobooth buttons */
+.capture-controls {
+    display: flex;
+    gap: 2rem;
+    z-index: 101;
+}
+
+
+/* CAPTURE BUTTON */
+/* I style the capture, save, and print buttons */
+.capture-btn {
+    background: none;
+    color: white;
+    border: none;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    cursor: pointer;
+    /* I use underline to indicate clickable text */
+    text-decoration: underline;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* CAPTURE BUTTON HOVER */
+/* I change the button color to red on hover */
+.capture-btn:hover {
+    color: red;
+}
+
+
+/* FLASH EFFECT */
+/* I created a white overlay that flashes when capturing a photo */
+#flash {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* FLASH ACTIVE STATE */
+/* I show the flash and animate it fading out */
+#flash.active {
+    display: block;
+    animation: flash-animation 0.5s ease-out;
+}
+
+/* FLASH ANIMATION KEYFRAMES */
+/* I animate the flash from visible to invisible */
+@keyframes flash-animation {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* CAPTURE CANVAS */
+/* I hide the canvas used for capturing photos */
+#capture-canvas {
+    display: none;
+}
+
+
+/* GLITCH ANIMATION */
+/* I created a glitch effect that can be applied to text */
+@keyframes glitch-text {
+    0%, 100% {
+        opacity: 1;
+    }
+    10%, 30%, 50%, 70%, 90% {
+        opacity: 0.7;
+    }
+    20%, 40%, 60%, 80% {
+        opacity: 1;
+    }
+}
+
+.glitch {
+    animation: glitch-text 3s infinite;
+}
+
+
+/* MARQUEE BORDER - CAMERA DENIED FALLBACK */
+/* I created a fallback view when camera access is denied */
+#marquee-border {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 100;
+}
+
+
+/* MARQUEE TOP - DENIED VIEW */
+/* I created a scrolling banner for the denied view */
+.marquee-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* MARQUEE TOP TRACK */
+.marquee-top-track {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;
+}
+
+/* PAUSE ON HOVER */
+.marquee-top:hover .marquee-top-track {
+    animation-play-state: paused;
+}
+
+
+/* MARQUEE BOTTOM - DENIED VIEW */
+.marquee-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* MARQUEE BOTTOM TRACK */
+.marquee-bottom-track {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+    animation: scroll-right 20s linear infinite;
+}
+
+/* PAUSE ON HOVER */
+.marquee-bottom:hover .marquee-bottom-track {
+    animation-play-state: paused;
+}
+
+
+/* MARQUEE TEXT - DENIED VIEW */
+.marquee-text {
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+/* MARQUEE TEXT HOVER */
+.marquee-text:hover {
+    color: #333333;
+}
+
+
+/* SCROLL LEFT ANIMATION */
+/* I animate the marquee scrolling from right to left */
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* SCROLL RIGHT ANIMATION */
+/* I animate the marquee scrolling from left to right */
+@keyframes scroll-right {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

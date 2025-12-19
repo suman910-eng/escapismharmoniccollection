@@ -1,0 +1,78 @@
+<!-- ENTRY 6: CLICK ME! STYLES -->
+<!-- This entry creates deliberate user frustration through endless error buttons -->
+<!-- Each click reveals a new button and plays an error sound */<!DOCTYPE html -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Click Me!</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<!-- BUTTONS CONTAINER -->
+<!-- I created 15 buttons that appear one at a time when clicked -->
+<!-- Each button gets progressively larger to increase frustration -->
+<div class="buttons">
+
+	<!-- BUTTON 1 - RED -->
+	<!-- This is the starting button, centered on the screen -->
+	<button class="btn btn1"><img src="red_button.png" alt="Button"></button>
+
+	<!-- BUTTON 2 - PURPLE -->
+	<!-- Hidden until button 1 is clicked -->
+	<button class="btn btn2"><img src="purple_button.png" alt="Button"></button>
+
+	<!-- BUTTON 3 - BLUE -->
+	<button class="btn btn3"><img src="blue_button.png" alt="Button"></button>
+
+	<!-- BUTTON 4 - GREEN -->
+	<button class="btn btn4"><img src="green_button.png" alt="Button"></button>
+
+	<!-- BUTTON 5 - ORANGE -->
+	<button class="btn btn5"><img src="orange_button.png" alt="Button"></button>
+
+	<!-- BUTTON 6 - PINK -->
+	<button class="btn btn6"><img src="pink_button.png" alt="Button"></button>
+
+	<!-- BUTTON 7 - BROWN -->
+	<button class="btn btn7"><img src="brown_button.png" alt="Button"></button>
+
+	<!-- BUTTON 8 - GREY -->
+	<button class="btn btn8"><img src="grey_button.png" alt="Button"></button>
+
+	<!-- BUTTON 9 - RED -->
+	<!-- I repeat colors from here since I have more buttons than colors -->
+	<button class="btn btn9"><img src="red_button.png" alt="Button"></button>
+
+	<!-- BUTTON 10 - PURPLE -->
+	<button class="btn btn10"><img src="purple_button.png" alt="Button"></button>
+
+	<!-- BUTTON 11 - BLUE -->
+	<button class="btn btn11"><img src="blue_button.png" alt="Button"></button>
+
+	<!-- BUTTON 12 - GREEN -->
+	<button class="btn btn12"><img src="green_button.png" alt="Button"></button>
+
+	<!-- BUTTON 13 - ORANGE -->
+	<button class="btn btn13"><img src="orange_button.png" alt="Button"></button>
+
+	<!-- BUTTON 14 - PINK -->
+	<button class="btn btn14"><img src="pink_button.png" alt="Button"></button>
+
+	<!-- BUTTON 15 - BROWN (FINAL) -->
+	<!-- This is the last button - clicking it ends the experience -->
+	<button class="btn btn15"><img src="brown_button.png" alt="Button"></button>
+
+</div>
+
+<!-- ERROR SOUND -->
+<!-- I preload an error sound that plays every time a button is clicked -->
+<audio id="errorSound" src="error.mp3" preload="auto"></audio>
+
+<!-- JAVASCRIPT -->
+<!-- I link to my external script file for all interactive functionality -->
+<script src="script.js"></script>
+
+</body>
+</html>

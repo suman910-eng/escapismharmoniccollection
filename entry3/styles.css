@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    letter-spacing: -0.05em;
+}
+
+html, body {
+    background-color: black;
+    color: white;
+    height: 100%;
+    /* I enable scrolling for the long text content */
+    overflow: auto;
+}
+
+/* BODY LAYOUT */
+body {
+    display: block;
+    padding: 1rem;
+}
+
+
+/* MAIN TEXT CONTAINER */
+.text {
+    text-align: left;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-left: 30px;
+    font-family: sans-serif;
+    line-height: 1.5;
+    /* I use clamp for responsive font sizing */
+    /* Minimum 15px, preferred 4vw, maximum 35px */
+    font-size: clamp(15px, 4vw, 35px);
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-weight: 200;
+    padding: 1rem;
+    transition: margin-left 0.3s ease;
+}
+
+/* PARAGRAPH STYLES */
+.text p {
+    margin-bottom: 2.5rem;
+    text-align: left;
+    text-justify: inter-word;
+    line-height: 1.8;
+    widows: 2;
+    orphans: 4;
+}
+
+
+/* UNDERLINE LINK STYLE */
+.underline {
+    text-decoration: underline;
+    color: white;
+}
+
+/* UNDERLINE LINK HOVER */
+.underline:hover {
+    color: #FAF9F6;
+    text-decoration: none;
+}
+
+
+/* ESCAPISM LINK */
+/* I style the clickable ESCAPISM links that navigate to landing page */
+.escapism-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* ESCAPISM LINK HOVER */
+/* I change the link to red on hover */
+.escapism-link:hover {
+    color: red;
+}
+
+
+/* ESCAPISM HIGHLIGHT */
+.escapism-highlight {
+    transition: color 0.3s ease;
+}
+
+/* ESCAPISM HIGHLIGHT HOVER */
+.escapism-highlight:hover {
+    color: red;
+    cursor: grab;
+}
+
+
+/* PROFESSOR LINK */
+/* I style the link to Severin Bunse's website */
+.teacher-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+/* I change to red on hover to match other links */
+.teacher-link:hover {
+    color: red;
+}
+
+
+/* MARQUEE TEXT CONTAINER */
+/* I created a vertical scrolling text banner on the left side */
+.marquee-text {
+    overflow: hidden;
+    background-color: black;
+    font-family: sans-serif;
+    /* I rotate the marquee 90 degrees to make it vertical */
+    transform: rotate(-90deg);
+    /* I fix the position so it stays visible while scrolling */
+    position: fixed;
+    top: 0;
+    /* I calculate the left position to place it on the left edge */
+    left: calc(17.5px - 100vh);
+    /* I set width to 200vh so it spans the full height when rotated */
+    width: 200vh;
+    height: 35px;
+    /* I use high z-index so marquee stays on top */
+    z-index: 5000;
+}
+
+
+/* MARQUEE TEXT TRACK */
+.marquee-text-track {
+    display: flex;
+    padding-left: 4.8rem;
+    gap: 4.8rem;
+    font-size: 25px;
+    font-weight: 400;
+    color: white;
+    width: max-content;
+    /* I animate the marquee scrolling continuously */
+    animation: marquee-move-text var(--speed, 30s) linear infinite var(--direction, forwards);
+    animation-play-state: running;
+    opacity: 100%;
+}
+
+
+/* MARQUEE LINK STYLES */
+.marquee-text-track a {
+    transition: color 0.3s ease;
+}
+
+/* ESCAPISM LINKS IN MARQUEE */
+/* I target odd-numbered links (ESCAPISM) to turn red on hover */
+.marquee-text-track a:nth-child(odd):hover {
+    color: red;
+}
+
+/* ABOUT LINKS IN MARQUEE */
+/* I target even-numbered links (ABOUT) to stay white on hover */
+.marquee-text-track a:nth-child(even):hover {
+    color: white;
+}
+
+
+/* MARQUEE PAUSE ON HOVER */
+/* I pause the animation when user hovers over the marquee */
+.marquee-text:hover .marquee-text-track {
+    animation-play-state: paused;
+}
+
+
+/* MARQUEE ANIMATION KEYFRAMES */
+@keyframes marquee-move-text {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* MARQUEE SPAN VISIBILITY */
+.marquee-text-track span {
+    opacity: 1 !important;
+}
+
+
+/* RESPONSIVE DESIGN */
+/* I adjust the layout for smaller screens */
+@media (max-width: 768px) {
+    .text {
+        margin-left: 50px;
+    }
+}
+
+
+/* GLOBAL LINK STYLES */
+a {
+    color: #FFFFFF;
+    text-decoration: none !important;
+}

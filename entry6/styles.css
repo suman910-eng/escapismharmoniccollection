@@ -1,0 +1,201 @@
+body {
+  text-align: center;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  /* I use min-height 100vh to ensure the body fills the screen */
+  min-height: 100vh;
+  /* I hide horizontal overflow to prevent scrolling issues */
+  overflow-x: hidden;
+}
+
+
+/* BUTTONS CONTAINER */
+/* I created a container that holds all the buttons */
+.buttons {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+
+/* BASE BUTTON STYLES */
+/* I style all buttons with absolute positioning so they can appear anywhere */
+.btn {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  /* I add a quick scale transition for hover and click effects */
+  transition: transform 0.1s ease;
+}
+
+/* BUTTON HOVER STATE */
+/* I make buttons slightly larger when hovered */
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* BUTTON ACTIVE STATE */
+/* I make buttons slightly smaller when clicked for feedback */
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* BUTTON IMAGES */
+/* I make the images fill the entire button */
+.btn img {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* BUTTON 1 - STARTING BUTTON */
+/* I position the first button in the center of the screen */
+/* This is the only button visible when the page loads */
+.btn1 {
+  top: 50%;
+  left: 50%;
+  /* I use translate to perfectly center the button */
+  transform: translate(-50%, -50%);
+  width: 170px;
+}
+
+/* I override hover and active transforms to maintain centering */
+.btn1:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.btn1:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+
+/* BUTTON 2 */
+/* I position this button in the top-left area */
+/* display: none hides it until button 1 is clicked */
+.btn2 {
+  display: none;
+  top: 12vh;
+  left: 5vw;
+  width: 190px;
+}
+
+/* BUTTON 3 */
+/* I position this button in the bottom-right area */
+.btn3 {
+  display: none;
+  top: 70vh;
+  left: 55vw;
+  width: 210px;
+}
+
+/* BUTTON 4 */
+/* I position this button in the top-right area */
+.btn4 {
+  display: none;
+  top: 20vh;
+  left: 60vw;
+  width: 230px;
+}
+
+/* BUTTON 5 */
+/* I position this button in the bottom-left area */
+.btn5 {
+  display: none;
+  top: 55vh;
+  left: 3vw;
+  width: 250px;
+}
+
+/* BUTTON 6 */
+/* I position this button in the top-center area */
+.btn6 {
+  display: none;
+  top: 8vh;
+  left: 38vw;
+  width: 270px;
+}
+
+/* BUTTON 7 */
+/* I position this button in the center-right area */
+.btn7 {
+  display: none;
+  top: 42vh;
+  left: 48vw;
+  width: 290px;
+}
+
+/* BUTTON 8 */
+/* I position this button in the bottom-center area */
+.btn8 {
+  display: none;
+  top: 65vh;
+  left: 25vw;
+  width: 310px;
+}
+
+/* BUTTON 9 */
+/* I position this button in the left area */
+.btn9 {
+  display: none;
+  top: 25vh;
+  left: 10vw;
+  width: 330px;
+}
+
+/* BUTTON 10 */
+/* I position this button in the center-left area */
+.btn10 {
+  display: none;
+  top: 38vh;
+  left: 18vw;
+  width: 350px;
+}
+
+/* BUTTON 11 */
+/* I position this button in the far right area */
+.btn11 {
+  display: none;
+  top: 15vh;
+  left: 70vw;
+  width: 370px;
+}
+
+/* BUTTON 12 */
+/* I position this button in the bottom-center area */
+.btn12 {
+  display: none;
+  top: 60vh;
+  left: 40vw;
+  width: 390px;
+}
+
+/* BUTTON 13 */
+/* I position this button in the top-left area */
+.btn13 {
+  display: none;
+  top: 5vh;
+  left: 15vw;
+  width: 410px;
+}
+
+/* BUTTON 14 */
+/* I position this button in the left-center area */
+.btn14 {
+  display: none;
+  top: 45vh;
+  left: 5vw;
+  width: 430px;
+}
+
+/* BUTTON 15 - FINAL BUTTON */
+/* I position this button in the center area */
+/* This is the last button, clicking it hides everything */
+.btn15 {
+  display: none;
+  top: 30vh;
+  left: 35vw;
+  width: 450px;
+}

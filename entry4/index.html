@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bored?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* CHROME LOGO CONTAINER */
+        .chrome-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        /* CHROME LOGO STYLING */
+        .chrome-logo {
+            width: 500px;
+            height: 500px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* SIDE LOGOS - DIMMED */
+        .side-chrome {
+            opacity: 0.5;
+        }
+
+        /* SPIN ON HOVER */
+        .chrome-logo:hover {
+            animation: spin 3s linear infinite;
+        }
+
+        .side-chrome:hover {
+            opacity: 1;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* CHOICE MODAL - HIDDEN BY DEFAULT */
+        .choice-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .choice-modal.show {
+            display: block;
+        }
+
+        .choice-text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .choice-btn {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 15px 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .choice-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* DARK OVERLAY BEHIND MODAL */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        /* RESPONSIVE - TABLET */
+        @media (max-width: 768px) {
+            .chrome-wrapper {
+                gap: 30px;
+            }
+
+            .chrome-logo {
+                width: 250px;
+                height: 250px;
+            }
+
+            .choice-text {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+
+            .choice-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* RESPONSIVE - MOBILE */
+        @media (max-width: 480px) {
+            .side-chrome {
+                display: none;
+            }
+
+            .chrome-logo {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CHROME LOGOS -->
+    <div class="chrome-wrapper">
+        <!-- LEFT CHROME - DECORATIVE -->
+        <img src="chrome.png" alt="Chrome Logo" class="chrome-logo side-chrome">
+        
+        <!-- CENTER CHROME - CLICKABLE -->
+        <img src="chrome.png" alt="Chrome Logo" class="chrome-logo center-chrome" onclick="showChoice()">
+        
+        <!-- RIGHT CHROME - DECORATIVE -->
+        <img src="chrome.png" alt="Chrome Logo" class="chrome-logo side-chrome">
+    </div>
+
+    <!-- OVERLAY - DARKENS BACKGROUND WHEN MODAL IS OPEN -->
+    <div class="overlay" id="overlay" onclick="closeChoice()"></div>
+
+    <!-- CHOICE MODAL - ASKS USER TO EXPLORE OR GO BACK -->
+    <div class="choice-modal" id="choiceModal">
+        <div class="choice-text">Do you want to explore?</div>
+        <div class="choice-buttons">
+            <button class="choice-btn" onclick="continueToExplore()">Yes</button>
+            <button class="choice-btn" onclick="escapeBack()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // SHOW MODAL FUNCTION
+        function showChoice() {
+            document.getElementById('choiceModal').classList.add('show');
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        // CLOSE MODAL FUNCTION
+        function closeChoice() {
+            document.getElementById('choiceModal').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        // YES BUTTON - GO TO EXPLORE PAGE
+        function continueToExplore() {
+            window.location.href = 'explore/index.html';
+        }
+
+        // NO BUTTON - RETURN TO LANDING PAGE
+        function escapeBack() {
+            window.location.href = '../landing.html';
+        }
+
+        // ESCAPE KEY CLOSES MODAL
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeChoice();
+            }
+        });
+    </script>
+</body>
+</html>

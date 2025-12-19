@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>listen - digital escapism</title>
+    <style>
+        html {
+            font-family: 'Helvetica Neue';
+        }
+        body {
+            margin: 0;
+            height: 100%;
+            background-color: black;
+            color: white;
+        }
+        .body {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* SIDEBAR NAVIGATION */
+        .nav {
+            padding-top: 1vh;
+            padding-left: 1.8vh;
+            padding-right: 1.05vh;
+            padding-bottom: 1vh;
+            height: 100vh;
+            font-size: 3vh;
+            background: white;
+            border-right: 1px solid white;
+            position: fixed;
+        }
+        .nav a {
+            text-decoration: none;
+            color: black;
+        }
+        .nav a:hover {
+            color: red;
+        }
+        .nav div {
+            margin-bottom: 0.5vh;
+        }
+        
+        /* IPHONE CONTAINER */
+        .phone-box {
+            background: black;
+            width: 350px;
+            height: 710px;
+            border-radius: 3.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2em;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            position: relative;
+            border: 1px solid white;
+        }
+        
+        /* IPHONE SCREEN */
+        .phone-screen {
+            background: lightgoldenrodyellow;
+            width: 100%;
+            height: 100%;
+            border-radius: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* IPHONE NOTCH */
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: black;
+            border-radius: 0 0 1.2em 1.2em;
+            z-index: 10;
+        }
+        
+        /* HOME INDICATOR BAR */
+        .home-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: #666;
+            border-radius: 2.5px;
+        }
+        
+        /* PHONE MESSAGE TEXT */
+        .phone-content {
+            text-align: center;
+            font-size: 2em;
+            line-height: 1.4;
+            padding: 2em 1em;
+            color: black;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+        
+        /* BLINKING ANIMATION */
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+        
+        /* TIMER DISPLAY */
+        .timer {
+            font-size: 13em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15vh;
+            color: white;
+        }
+        
+        /* MAIN CONTENT CONTAINER */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding-top: 5vh;
+            margin-left: 10vw;
+        }
+    </style>
+</head>
+<body>
+<div class='body'>
+
+<!-- SIDEBAR NAVIGATION -->
+<div class='nav'>
+    <div id="home"><a href='../landing.html'>exit</a></div>
+    <div id="why"><a href='index.html'>why?</a></div>
+    <div id="what"><a href='what.html'>what?</a></div>
+    <div id="explore"><a href='explore.html'>explore</a></div>
+    <div id="listen"><a href='listen.html'>listen</a></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-container">
+
+    <!-- IPHONE MOCKUP -->
+    <div class="phone-box">
+        <div class="phone-screen">
+            <div class="notch"></div>
+            <!-- MESSAGE THAT CHANGES BASED ON TIME SPENT -->
+            <div class="phone-content" id="phoneMessage">
+                ‼️<br><br>
+                how long have<br>
+                you been staring<br>
+                at this screen?<br><br>
+                time to switch<br>
+                devices.
+            </div>
+            <div class="home-indicator"></div>
+        </div>
+    </div>
+    
+    <!-- TIMER DISPLAY -->
+    <div class="timer" id="timer">00:00:00</div>
+
+</div>
+
+</div>
+
+<script>
+// TIMER VARIABLES
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+
+// UPDATE TIMER FUNCTION
+// I increment the timer every second and format the display
+function updateTimer() {
+    seconds++;
+    if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+    }
+    if (minutes === 60) {
+        minutes = 0;
+        hours++;
+    }
+    
+    // I format each unit with leading zeros
+    const hoursDisplay = hours < 10 ? '0' + hours : hours;
+    const minutesDisplay = minutes < 10 ? '0' + minutes : minutes;
+    const secondsDisplay = seconds < 10 ? '0' + seconds : seconds;
+    
+    document.getElementById('timer').textContent = hoursDisplay + ':' + minutesDisplay + ':' + secondsDisplay;
+    
+    // I update the phone message based on time spent
+    updateMessage();
+}
+
+// UPDATE MESSAGE FUNCTION
+// I change the phone message based on how long the user has been on the page
+function updateMessage() {
+    const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+    const messageElement = document.getElementById('phoneMessage');
+    
+    if (totalSeconds >= 120) {
+        // After 2 minutes
+        messageElement.innerHTML = "‼️<br><br>Maybe it's time<br>to step away?";
+    } else if (totalSeconds >= 60) {
+        // After 1 minute
+        messageElement.innerHTML = "‼️<br><br>That's " + totalSeconds + "<br>seconds of<br>screen time";
+    } else if (totalSeconds >= 30) {
+        // After 30 seconds
+        messageElement.innerHTML = "‼️<br><br>Still here?";
+    } else {
+        // Default message
+        messageElement.innerHTML = "‼️<br><br>how long have<br>you been staring<br>at this screen?<br><br>time to switch<br>devices.";
+    }
+}
+
+// I start the timer interval to update every second
+setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>

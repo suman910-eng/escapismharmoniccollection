@@ -1,0 +1,192 @@
+body {
+    margin: .75vh;
+    height: 100%;
+}
+
+
+/* ENTRY FADE-IN OVERLAY */
+/* I created a black overlay that fades out when the page loads */
+/* This creates a smooth entrance effect for the reader */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    /* I use animation to fade out after 2 seconds delay */
+    animation: overlayAnimation 1s ease-out 2s forwards;
+    /* z-index 9999 ensures the overlay is on top of everything */
+    z-index: 9999;
+}
+
+/* OVERLAY ANIMATION KEYFRAMES */
+/* This keyframe fades the overlay from visible to invisible */
+@keyframes overlayAnimation {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+
+/* TIMER WRAPPER */
+/* I use flexbox to push the timer to the right side of the screen */
+.timer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* TIMER TEXT */
+/* The timer shows how long the user has been on the page */
+#timer {
+    background: none;
+    border: none;
+    border-radius: 0;
+    width: auto;
+    height: auto;
+    display: block;
+    padding: 0;
+    margin: 0;
+    /* I use fixed positioning so the timer stays visible while scrolling */
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    font-family: 'BBB Strobo Variable';
+    color: black;
+    font-size: 2vw;
+    /* I added a smooth transition for any font size changes */
+    transition: font-size .75s ease;
+}
+
+
+/* MAIN TEXT */
+p {
+    font-family: 'PP Neue Montreal';
+    font-size: 2vw;
+    line-height: 1.7;
+}
+
+/* BODY CONTAINER */
+.body {
+    display: flex;
+}
+
+/* TEXT WRAPPER */
+.wholetext {
+    width: 100%;
+    margin-top: 11vh;
+}
+
+
+/* TOGGLE SWITCH PILL */
+/* I created a pill-shaped toggle button that controls ellipsis visibility */
+/* The design mimics on/off switch */
+.toggle-switch {
+    width: 8vw;
+    height: 6.5vh;
+    background: black;
+    border: 1px solid black;
+    border-radius: 40px;
+    cursor: pointer;
+    position: relative;
+    /* I use transition for smooth color change when toggled */
+    transition: background-color .3s;
+}
+
+/* TOGGLE SWITCH ACTIVE STATE */
+/* When active, the background changes to white */
+.toggle-switch.active {
+    background: white;
+}
+
+/* TOGGLE THUMB */
+/* I use a pseudo-element to create the circular thumb inside the toggle */
+/* The thumb has a buffer icon as the background image */
+.toggle-switch:before {
+    content: "";
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background-image: url('buffer2.png');
+    background-repeat: round;
+    border: 1px solid black;
+    position: absolute;
+    /* I center the thumb vertically using transform */
+    top: 50%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    /* I use transition for smooth sliding animation */
+    transition: left .2s;
+}
+
+/* TOGGLE THUMB ACTIVE STATE */
+/* When active, the thumb slides to the right side */
+.toggle-switch.active:before {
+    left: 75%;
+}
+
+/* TOGGLE CONTAINER */
+/* I position the toggle in the top-left corner of the screen */
+.head {
+    position: fixed;
+    top: 7vh;
+    left: .75vh;
+    z-index: 100;
+}
+
+
+/* REMINDER POPUP */
+/* I created a popup box that displays wellness reminders */
+/* The popup appears centered on the screen */
+#popup {
+    position: fixed;
+    top: 15vh;
+    /* I use left 50% and translateX to center horizontally */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 80vw;
+    padding: 1.2rem 1.5rem;
+    background: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    font-family: 'PP Neue Montreal';
+    font-size: 2.2vh;
+    line-height: 1.4;
+    text-align: left;
+    /* I set display to none by default, JavaScript shows it when needed */
+    display: none;
+    /* High z-index ensures popup appears above other content */
+    z-index: 2000;
+}
+
+/* LINK STYLES */
+/* I remove default link styling for cleaner appearance */
+a {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* ELLIPSIS TOGGLE CLASSES */
+/* I use these classes to show/hide the "..." text */
+
+/* ELLIPSIS DEFAULT STATE */
+.ellipsis {
+    transition: opacity .3s ease;
+}
+
+/* ELLIPSIS HIDDEN STATE */
+/* When this class is added, the ellipsis becomes invisible */
+.noellipsis {
+    opacity: 0;
+}
+
+
+/* RESPONSIVE DESIGN */
+@media only screen and (max-height: 800px){
+    #popup{
+        max-width: 90vw;
+    }
+}

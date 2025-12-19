@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>explore</title>
+    <style>
+        html {
+            font-family: 'Helvetica Neue';
+        }
+        body {
+            margin: 0;
+            height: 100%;
+            background-color: black;
+            color: white;
+        }
+
+        /* MAIN LAYOUT CONTAINER */
+        .body {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* SIDEBAR NAVIGATION */
+        .nav {
+            padding-top: 1vh;
+            padding-left: 1.8vh;
+            padding-right: 1.05vh;
+            padding-bottom: 1vh;
+            height: 100vh;
+            font-size: 3vh;
+            background: white;
+            border-right: 1px solid white;
+            position: fixed;
+        }
+        .nav a {
+            text-decoration: none;
+            color: black;
+        }
+        .nav a:hover {
+            color: red;
+        }
+        .nav div {
+            margin-bottom: 0.5vh;
+        }
+
+        /* MAIN CONTENT AREA */
+        .content {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            margin-right: 3vw;
+            margin-left: 13vw;
+            margin-top: 10vh;
+        }
+
+        /* MAIN REDDIT POST BOX */
+        .box {
+            background: black;
+            width: 75%;
+            border-radius: 4.5em;
+            padding: 2.75em;
+            border: 1px solid white;
+            margin-right: 10vw;
+        }
+
+        /* USER PROFILE CIRCLE */
+        .circle {
+            background-color: #66E700;
+            border-radius: 50%;
+            border: 1px solid white;
+            width: 80px;
+            height: 80px;
+            margin-right: 1vw;
+        }
+
+        /* POST HEADER WITH USER INFO */
+        .header {
+            display: flex;
+            margin-bottom: 2vh;
+        }
+
+        /* MAIN QUESTION TEXT */
+        .question {
+            font-size: 8vh;
+            font-weight: bold;
+            margin-bottom: 3.5vh;
+            line-height: 1.1;
+        }
+        .info {
+            display: block;
+            vertical-align: center;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: auto;
+            font-size: 2.5vh;
+        }
+        .top {
+            display: flex;
+            margin-bottom: 10vh;
+        }
+
+        /* REPLY COMMENTS CONTAINER */
+        .minis {
+            margin-top: 5vh;
+        }
+
+        /* INDIVIDUAL REPLY BOX */
+        .minibox {
+            display: block;
+            background: black;
+            width: 55%;
+            border-radius: 2em;
+            padding: 1.35em;
+            font-size: 2.75vh;
+            margin-bottom: 4vh;
+            border: 1px solid white;
+        }
+        .miniheader {
+            display: flex;
+            margin-bottom: 2vh;
+        }
+
+        /* REPLY USER PROFILE CIRCLE */
+        .minicircle {
+            border-radius: 50%;
+            border: 1px solid white;
+            width: 2em;
+            height: 2em;
+            margin-right: .5em;
+            margin-top: .2vh;
+        }
+        .miniuser {
+            display: block;
+            vertical-align: center;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    </style>
+</head>
+<body>
+<div class='body'>
+
+<!-- SIDEBAR NAVIGATION -->
+<div class='nav'>
+    <div id="home"><a href='../landing.html'>exit</a></div>
+    <div id="why"><a href='index.html'>why?</a></div>
+    <div id="what"><a href='what.html'>what?</a></div>
+    <div id="explore"><a href='explore.html'>explore</a></div>
+    <div id="listen"><a href='listen.html'>listen</a></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class='content'>
+
+<!-- MAIN REDDIT POST -->
+<div class='top'>
+<div class="box">
+    <div class='header'>
+    <div class='circle'></div>
+    <div class='info'>
+    <div class="subhead"><b>r/AskReddit</b> • 2 yr. ago</div>
+    <div class="user">Lego8945</div>
+    </div>
+    </div>
+    <div class="text">
+    <div class="question">what do u do to escape reality?</div>
+    </div>
+</div>
+</div>
+
+<!-- REPLY COMMENTS CONTAINER -->
+<!-- JavaScript dynamically generates reply boxes here -->
+<div class="minis">
+</div>
+
+</div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

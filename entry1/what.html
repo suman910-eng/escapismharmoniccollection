@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>what - digital escapism</title>
+    <style>
+        html {
+            font-family: 'Helvetica Neue';
+        }
+        body {
+            margin: 0;
+            height: 100%;
+            background-color: black;
+            color: white;
+        }
+        .body {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* SIDEBAR NAVIGATION */
+        .nav {
+            padding-top: 1vh;
+            padding-left: 1.8vh;
+            padding-right: 1.05vh;
+            padding-bottom: 1vh;
+            height: 100vh;
+            font-size: 3vh;
+            background: white;
+            border-right: 1px solid white;
+            position: fixed;
+        }
+        .nav a {
+            text-decoration: none;
+            color: black;
+        }
+        .nav a:hover {
+            color: red;
+        }
+        .nav div {
+            margin-bottom: 0.5vh;
+        }
+        
+        /* MAIN CONTENT CONTAINER */
+        .what-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            padding-top: 8vh;
+            margin-left: 10vw;
+        }
+        
+        /* POST WRAPPER */
+        .post-container {
+            width: 70%;
+            max-width: 1100px;
+            position: relative;
+        }
+        
+        /* REDDIT POST BOX */
+        .what-box {
+            background: black;
+            width: 100%;
+            border-radius: 4em;
+            padding: 2.5em;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+        
+        .what-box:hover {
+            opacity: 0.95;
+        }
+        
+        /* POST HEADER */
+        .what-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+        }
+        
+        /* USER PROFILE CIRCLE */
+        .what-circle {
+            border-radius: 50%;
+            border: 1px solid white;
+            width: 75px;
+            height: 75px;
+            min-width: 75px;
+            margin-right: 1.5vw;
+        }
+        
+        /* CIRCLE COLOR VARIANTS */
+        .what-circle.purple {
+            background-color: #9b59b6;
+        }
+        
+        .what-circle.teal {
+            background-color: #1abc9c;
+        }
+        
+        .what-user-info {
+            font-size: 2.5vh;
+        }
+        
+        /* POST TITLE */
+        .what-title {
+            font-size: 5vh;
+            font-weight: bold;
+            margin-bottom: 2vh;
+        }
+        
+        /* POST CONTENT */
+        .what-content {
+            font-size: 2.3vh;
+            line-height: 1.6;
+        }
+        
+        /* HIDDEN STATE FOR POST TOGGLE */
+        .hidden {
+            display: none;
+        }
+        
+        /* CLICK INSTRUCTION */
+        .click-hint {
+            text-align: center;
+            margin-top: 2vh;
+            font-size: 2vh;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class='body'>
+
+<!-- SIDEBAR NAVIGATION -->
+<div class='nav'>
+    <div id="home"><a href='../landing.html'>exit</a></div>
+    <div id="why"><a href='index.html'>why?</a></div>
+    <div id="what"><a href='what.html'>what?</a></div>
+    <div id="explore"><a href='explore.html'>explore</a></div>
+    <div id="listen"><a href='listen.html'>listen</a></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="what-container">
+    <div class="post-container">
+
+        <!-- FIRST POST - VISIBLE BY DEFAULT -->
+        <div class="what-box" id="post1">
+            <div class='what-header'>
+                <div class="what-circle purple"></div>
+                <div class="what-user-info">
+                    <div><b>r/Mindfulness</b> • 4 yr. ago</div>
+                    <div>spaceang3l</div>
+                </div>
+            </div>
+            
+            <div class="what-title">
+                what the fuck is reality?
+            </div>
+            
+            <div class="what-content">
+                I've been thinking a lot lately about how each and every individual is experiencing their OWN reality. Like the way we each view the world is based on our own past conditions and what we believe the world to be....<br><br>
+                But nothing is real.<br><br>
+                Past isn't real, future isn't real, it's all an illusion. The only thing that exists is right NOW.<br><br>
+                so what even is reality? Is anything actually real or is it all just an illusion? You could be isolated in an empty world & everything you are seeing is just your imagination.
+            </div>
+        </div>
+
+        <!-- SECOND POST - HIDDEN INITIALLY -->
+        <!-- Clicking on post1 reveals this post -->
+        <div class="what-box hidden" id="post2">
+            <div class='what-header'>
+                <div class="what-circle teal"></div>
+                <div class="what-user-info">
+                    <div><b>r/TrueAskReddit</b> • 6 yr. ago</div>
+                    <div>cornelg7</div>
+                </div>
+            </div>
+            
+            <div class="what-title">
+                Is everything just...escapism?
+            </div>
+            
+            <div class="what-content">
+                Escapism is defined as 'the tendency to seek distraction and relief from unpleasant realities, especially by seeking entertainment or engaging in fantasy.'<br><br>
+                Having in mind that probably everyone will sooner or later die, isn't living just a way to 'seek relief' from the 'unpleasant reality' of death?<br><br>
+                On the other hand, for those who accept and acknowledge death as unavoidable, isn't this acceptance also just another form of escapism?<br><br>
+                People are probably aquainted with the emptiness we humans feel inside. From what I gather on this matter, the consensus is that this emptiness cannot be filled in this world, and that by avoiding the emptiness and by focusing on other aspects of life, one can reduce the size of the hole considerably. However, don't we avoid this emptiness only because it would be too harsh to live in it? Isn't this another form of escaping a reality?<br><br>
+                What even is a 'reality'? It is defined as 'the state of things as they actually exist (...)'. But there is so much we don't know about life, about death, about us, about others, about how all these 'actually exist'. There's a quote from Neon Genesis Evangelion saying that 'The truthes are as many as people. But there's only one truth that you have, which is formed of the narrowed view of the world, that's revised information to protect yourself, the twisted truth.' In other words, by the single act of living, each of us create our own reality in order to protect and distract ourselves: Escapism. What are we trying to escape from, anyway?
+            </div>
+        </div>
+
+        <!-- CLICK INSTRUCTION -->
+        <div class="click-hint">click on the post to switch</div>
+
+    </div>
+</div>
+
+</div>
+
+<script>
+// POST TOGGLE FUNCTIONALITY
+// I grab both post elements
+const post1 = document.getElementById('post1');
+const post2 = document.getElementById('post2');
+
+// I add click listener to post1 to show post2
+post1.addEventListener('click', function() {
+    post1.classList.add('hidden');
+    post2.classList.remove('hidden');
+});
+
+// I add click listener to post2 to show post1
+post2.addEventListener('click', function() {
+    post2.classList.add('hidden');
+    post1.classList.remove('hidden');
+});
+</script>
+
+</body>
+</html>
